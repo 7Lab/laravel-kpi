@@ -58,8 +58,9 @@ class UserCount extends Command
                 $user_count = DB::table('users')->count();
             }
 
-            $this->client->post('user-count', [
+            $this->client->post('/user-count', [
                 'json' => [
+                    'application_id' => config('kpi.app_id'),
                     'user_count' => $user_count,
                 ]
             ]);
