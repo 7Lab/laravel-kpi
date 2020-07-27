@@ -21,6 +21,8 @@ class KpiServiceProvider extends ServiceProvider
                 UserCount::class,
             ]);
         }
+
+        $this->loadMigrationsFrom(__DIR__ . './database/migrations');
     }
 
     /**
@@ -29,5 +31,7 @@ class KpiServiceProvider extends ServiceProvider
     public function register()
     {
         $this->mergeConfigFrom(__DIR__.'/../config/kpi.php', 'kpi');
+
+        $this->app->register(KpiUserServiceProvider::class);
     }
 }

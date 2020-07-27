@@ -13,8 +13,7 @@ return [
     'url' => env('KPI_URL'),
 
     /*
-     * Specify the application ID that will be send together with the statistics.
+     * Specify the last login column name.
      */
-    'app_id' => env('KPI_APP_ID', str_slug(config('app.name'), '-')),
-
+    'last_login_column_name' => env('KPI_LAST_LOGIN_COLUMN', 'last_login'),
 ];
