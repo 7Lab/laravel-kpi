@@ -46,9 +46,11 @@ trait HasExternalConnection
      */
     public function sendStats($path, $attributes)
     {
-        $this->client->post(config('kpi.endpoint') . $path, [ //sprintf
+        $res = $this->client->post(config('kpi.endpoint') . $path, [ //sprintf
             'json' => $attributes
         ]);
+
+        dd($res);
 
         $this->info('Measured user count statistics.');
     }
@@ -64,7 +66,6 @@ trait HasExternalConnection
             $this->error('Guzzle client was not set, environments missing.');
             return false;
         }
-
         if (Schema::hasTable(config('kpi.users_table_name')) === false) {
             $this->error('Table "' . config('kpi.users_table_name') .'" doesn\'t exist.');
             return false;
