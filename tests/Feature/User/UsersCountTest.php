@@ -55,7 +55,7 @@ class UsersCountTest extends TestCase
 
         }
 
-        $this->actingAs($user, 'api');
+        auth()->login($user);
 
         if (Schema::hasColumn(config('kpi.users_table_name'), 'deleted_at')) {
             $query->whereNull('deleted_at');
