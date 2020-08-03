@@ -35,8 +35,12 @@ class ActiveUsersCount extends Command implements KpiCommand
             $query->whereNull('deleted_at');
         }
 
+        if (Schema::hasColumn(config('kpi.users_table_name'), config('kpi.last_login_column_name'))) {
+            $query
+                ->where(config('kpi.last_login_column_name'), '>', Carbon::now()->subDays(config('kpi.active_period')));
+        }
+
         $activeTotal = $query
-            ->where(config('kpi.last_login_column_name'), '>', Carbon::now()->subDays(config('kpi.active_period')))
             ->count();
 
         $this->sendStats('users', [

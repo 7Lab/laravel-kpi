@@ -46,11 +46,9 @@ trait HasExternalConnection
      */
     public function sendStats($path, $attributes)
     {
-        $res = $this->client->post(config('kpi.endpoint') . $path, [ //sprintf
+        $this->client->post(config('kpi.endpoint') . $path, [ //sprintf
             'json' => $attributes
         ]);
-
-        dd($res);
 
         $this->info('Measured user count statistics.');
     }
