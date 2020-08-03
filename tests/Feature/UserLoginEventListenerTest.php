@@ -19,6 +19,6 @@ class UserLoginEventListenerTest extends TestCase
             new Login('api', $user, null)
         );
 
-        $this->assertNotNull($user->last_login);
+        $this->assertNotNull($user->last_login_at);
     }
 }

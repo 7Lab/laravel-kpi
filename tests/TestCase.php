@@ -24,7 +24,7 @@ class TestCase extends \Orchestra\Testbench\TestCase
         include_once __DIR__ . '/database/migrations/create_users_table.php.stub';
         (new \CreateUsersTable)->up();
 
-        include_once __DIR__ . '/../src/database/migrations/update_users_table_add_last_login.php.stub';
+        include_once __DIR__ . '/database/migrations/update_users_table_add_last_login.php.stub';
         (new \UpdateUsersTableAddLastLogin)->up();
 
         $this->loadFactoriesUsing($app, __DIR__ . './database/factories');

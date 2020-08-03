@@ -16,6 +16,6 @@ class UserLastLoginTest extends TestCase
 
         auth()->login($user);
 
-        $this->assertNotNull($user->last_login);
+        $this->assertNotNull($user->last_login_at);
     }
 }
