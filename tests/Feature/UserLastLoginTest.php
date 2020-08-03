@@ -2,10 +2,7 @@
 
 namespace SevenLab\Kpi\Tests;
 
-use Illuminate\Auth\Events\Login;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Event;
 
 
 class UserLastLoginTest extends TestCase

@@ -13,7 +13,7 @@ class KpiServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->publishes([
-            __DIR__.'/../config/kpi.php' => config_path('kpi.php'),
+            __DIR__ . '/../config/kpi.php' => config_path('kpi.php'),
         ], 'config');
 
         if ($this->app->runningInConsole()) {
@@ -30,7 +30,7 @@ class KpiServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->mergeConfigFrom(__DIR__.'/../config/kpi.php', 'kpi');
+        $this->mergeConfigFrom(__DIR__ . '/../config/kpi.php', 'kpi');
 
         $this->app->register(KpiUserServiceProvider::class);
     }

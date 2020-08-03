@@ -3,7 +3,6 @@
 namespace SevenLab\Kpi\Tests;
 
 use SevenLab\Kpi\KpiServiceProvider;
-use SevenLab\Kpi\KpiUserServiceProvider;
 
 class TestCase extends \Orchestra\Testbench\TestCase
 {
