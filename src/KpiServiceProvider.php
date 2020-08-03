@@ -3,7 +3,9 @@
 namespace SevenLab\Kpi;
 
 use Illuminate\Support\ServiceProvider;
-use SevenLab\Kpi\Commands\UserCount;
+use SevenLab\Kpi\Commands\ActiveUsersCount;
+use SevenLab\Kpi\Commands\DeletedUsersCount;
+use SevenLab\Kpi\Commands\TotalUsersCount;
 
 class KpiServiceProvider extends ServiceProvider
 {
@@ -18,7 +20,9 @@ class KpiServiceProvider extends ServiceProvider
 
         if ($this->app->runningInConsole()) {
             $this->commands([
-                UserCount::class,
+                TotalUsersCount::class,
+                ActiveUsersCount::class,
+                DeletedUsersCount::class,
             ]);
         }
 

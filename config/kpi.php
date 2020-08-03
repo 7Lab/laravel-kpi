@@ -8,9 +8,14 @@ return [
     'token' => env('LAB_TOKEN'),
 
     /*
-     * Specify the url that will be used.
+     * Specify the base url that will be used.
      */
     'url' => env('LAB_BASE_URL'),
+
+    /*
+     * Specify the endpoint that will be used for the KPI stats.
+     */
+    'endpoint' => env('KPI_ENDPOINT', ''),
 
     /**
      * Define the number of days we will threat as being 'active'
