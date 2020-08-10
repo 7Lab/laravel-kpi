@@ -29,15 +29,18 @@ class ActiveUsersCount extends Command implements KpiCommand
 
     public function gatherStats()
     {
-        $query = DB::table(config('kpi.users_table_name'));
+        $usersTableName = config('kpi.users_table_name');
+        $lastLoginCol = config('kpi.last_login_column_name');
 
-        if (Schema::hasColumn(config('kpi.users_table_name'), 'deleted_at')) {
+        $query = DB::table($usersTableName);
+
+        if (Schema::hasColumn($usersTableName, 'deleted_at')) {
             $query->whereNull('deleted_at');
         }
 
-        if (Schema::hasColumn(config('kpi.users_table_name'), config('kpi.last_login_column_name'))) {
+        if (Schema::hasColumn($usersTableName, $lastLoginCol)) {
             $query
-                ->where(config('kpi.last_login_column_name'), '>', Carbon::now()->subDays(config('kpi.active_period')));
+                ->where($lastLoginCol, '>', Carbon::now()->subDays(config('kpi.active_period')));
         }
 
         $activeTotal = $query

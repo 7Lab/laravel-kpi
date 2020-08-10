@@ -2,6 +2,7 @@
 
 namespace SevenLab\Kpi;
 
+use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Support\ServiceProvider;
 use SevenLab\Kpi\Commands\ActiveUsersCount;
 use SevenLab\Kpi\Commands\DeletedUsersCount;
@@ -27,6 +28,13 @@ class KpiServiceProvider extends ServiceProvider
         }
 
         $this->loadMigrationsFrom(__DIR__ . './database/migrations');
+
+        $this->app->booted(function () {
+            $schedule = $this->app->make(Schedule::class);
+            $schedule->call('kpi:active-user-count')->weeklyOn(7, '12:00');
+            $schedule->call('kpi:deleted-user-count')->weeklyOn(7, '12:00');
+            $schedule->call('kpi:total-user-count')->weeklyOn(7, '12:00');
+        });
     }
 
     /**

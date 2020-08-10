@@ -28,9 +28,11 @@ class TotalUsersCount extends Command implements KpiCommand
 
     public function gatherStats()
     {
-        $query = DB::table(config('kpi.users_table_name'));
+        $userTableName = config('kpi.users_table_name');
 
-        if (Schema::hasColumn(config('kpi.users_table_name'), 'deleted_at')) {
+        $query = DB::table($userTableName);
+
+        if (Schema::hasColumn($userTableName, 'deleted_at')) {
             $query->whereNull('deleted_at');
         }
 
