@@ -28,16 +28,18 @@ class DeletedUsersCount extends Command implements KpiCommand
 
     public function gatherStats()
     {
-        $userTableName = config('kpi.users_table_name');
+        $usersTableName = config('kpi.users_table_name');
 
-        if (Schema::hasColumn($userTableName, 'deleted_at')) {
-            $deletedCount = DB::table($userTableName)->whereNotNull('deleted_at')->count();
+        if (Schema::hasTable($usersTableName)) {
+            if (Schema::hasColumn($usersTableName, 'deleted_at')) {
+                $deletedCount = DB::table($usersTableName)->whereNotNull('deleted_at')->count();
 
-            $this->sendStats('users', [
-                'deleted_total' => $deletedCount,
-            ]);
+                $this->sendStats('users', [
+                    'deleted_total' => $deletedCount,
+                ]);
 
-            $this->info('Measured user count statistics.');
+                $this->info('Measured user count statistics.');
+            }
         }
     }
 }
