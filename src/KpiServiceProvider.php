@@ -27,7 +27,7 @@ class KpiServiceProvider extends ServiceProvider
             ]);
         }
 
-        $this->loadMigrationsFrom(__DIR__ . '../database/migrations');
+        $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
 
         $this->app->booted(function () {
             $schedule = $this->app->make(Schedule::class);
