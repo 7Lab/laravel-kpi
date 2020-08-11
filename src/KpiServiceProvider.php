@@ -7,6 +7,7 @@ use Illuminate\Support\ServiceProvider;
 use SevenLab\Kpi\Commands\ActiveUsersCount;
 use SevenLab\Kpi\Commands\DeletedUsersCount;
 use SevenLab\Kpi\Commands\TotalUsersCount;
+use SevenLab\Kpi\Providers\KpiUserServiceProvider;
 
 class KpiServiceProvider extends ServiceProvider
 {

@@ -1,8 +1,10 @@
 <?php
 
-namespace SevenLab\Kpi;
+namespace SevenLab\Kpi\Providers;
 
+use Illuminate\Auth\Events\Login;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
+use SevenLab\Kpi\Listeners\UserLoginEventListener;
 
 class KpiUserServiceProvider extends ServiceProvider
 {
@@ -12,8 +14,8 @@ class KpiUserServiceProvider extends ServiceProvider
      * @var array
      */
     protected $listen = [
-        'Illuminate\Auth\Events\Login' => [
-            'SevenLab\Kpi\Listeners\UserLoginEventListener',
+        Login::class => [
+            UserLoginEventListener::class,
         ],
     ];
 
