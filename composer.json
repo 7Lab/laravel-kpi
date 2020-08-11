@@ -50,8 +50,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "SevenLab\\Kpi\\KpiServiceProvider",
-                "SevenLab\\Kpi\\KpiUserServiceProvider"
+                "SevenLab\\Kpi\\KpiServiceProvider"
             ]
         }
     }
