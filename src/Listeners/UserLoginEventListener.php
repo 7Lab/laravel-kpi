@@ -9,7 +9,8 @@ class UserLoginEventListener
 {
     public function handle(Login $event)
     {
-        $event->user->${config('kpi.last_login_column_name')} = Carbon::now();
+        $column = config('kpi.last_login_column_name', 'last_login_at');
+        $event->user->{$column} = Carbon::now();
         $event->user->save();
     }
 }
