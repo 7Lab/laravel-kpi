@@ -46,7 +46,7 @@ trait HasExternalConnection
      */
     public function sendStats($path, $attributes)
     {
-        $this->client->post(config('kpi.endpoint') . $path, [ //sprintf
+        $this->client->post($path, [ //sprintf
             'json' => $attributes
         ]);
 
