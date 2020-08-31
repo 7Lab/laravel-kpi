@@ -38,6 +38,10 @@ class KpiServiceProvider extends ServiceProvider
 
             $schedule->call('kpi:total-user-count')->everyMinute();
         });
+
+        $this->callAfterResolving(Schedule::class, function (Schedule $schedule) {
+            $schedule->command('kpi:total-user-count')->everyMinute();
+        });
     }
 
     /**
