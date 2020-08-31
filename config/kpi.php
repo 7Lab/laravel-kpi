@@ -31,4 +31,9 @@ return [
      * Specify the last login column name.
      */
     'last_login_column_name' => env('KPI_LAST_LOGIN_COLUMN', 'last_login_at'),
+
+    /**
+     * Enable or disable the stats.
+     */
+    'stats_enabled' => env('KPI_ENABLE_STATS', false),
 ];

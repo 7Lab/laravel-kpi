@@ -60,6 +60,10 @@ trait HasExternalConnection
      */
     public function validate()
     {
+        if (config('kpi.stats_enabled') === false) {
+            $this->info('Stats are not enabled.');
+            return false;
+        }
         if ($this->client === false) {
             $this->error('Guzzle client was not set, environments missing.');
             return false;
