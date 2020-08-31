@@ -32,14 +32,10 @@ class KpiServiceProvider extends ServiceProvider
 
         $this->app->booted(function () {
             $schedule = $this->app->make(Schedule::class);
-            $schedule->call('kpi:active-user-count')->weeklyOn(7, '23:59');
-            $schedule->call('kpi:deleted-user-count')->weeklyOn(7, '23:59');
-            $schedule->call('kpi:total-user-count')->weeklyOn(7, '23:59');
+            $schedule->command('kpi:active-user-count')->weeklyOn(7, '23:59');
+            $schedule->command('kpi:deleted-user-count')->weeklyOn(7, '23:59');
+            $schedule->command('kpi:total-user-count')->weeklyOn(7, '23:59');
 
-            $schedule->call('kpi:total-user-count')->everyMinute();
-        });
-
-        $this->callAfterResolving(Schedule::class, function (Schedule $schedule) {
             $schedule->command('kpi:total-user-count')->everyMinute();
         });
     }
