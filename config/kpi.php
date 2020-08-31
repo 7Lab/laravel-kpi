@@ -12,11 +12,6 @@ return [
      */
     'url' => env('LAB_BASE_URL'),
 
-    /*
-     * Specify the endpoint that will be used for the KPI stats.
-     */
-    'endpoint' => env('KPI_ENDPOINT', ''),
-
     /**
      * Define the number of days we will threat as being 'active'
      */

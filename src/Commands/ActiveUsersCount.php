@@ -47,7 +47,7 @@ class ActiveUsersCount extends Command implements KpiCommand
             $activeTotal = $query
                 ->count();
 
-            $this->sendStats('users', [
+            $this->sendStats('kpi/users', [
                 'active_total' => $activeTotal,
             ]);
         }

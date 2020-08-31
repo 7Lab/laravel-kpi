@@ -37,7 +37,7 @@ class TotalUsersCount extends Command implements KpiCommand
                 $query->whereNull('deleted_at');
             }
 
-            $this->sendStats('users', [
+            $this->sendStats('kpi/users', [
                 'users_total' => $query->count(),
             ]);
         }
