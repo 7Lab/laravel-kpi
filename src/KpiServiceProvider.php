@@ -35,8 +35,6 @@ class KpiServiceProvider extends ServiceProvider
             $schedule->command('kpi:active-user-count')->weeklyOn(7, '23:59');
             $schedule->command('kpi:deleted-user-count')->weeklyOn(7, '23:59');
             $schedule->command('kpi:total-user-count')->weeklyOn(7, '23:59');
-
-            $schedule->command('kpi:total-user-count')->everyMinute();
         });
     }
 
