@@ -9,7 +9,8 @@ class UpdateUsersTableAddLastLogin extends Migration
 
     public function up()
     {
-        if (Schema::hasTable(config('kpi.users_table_name'))) {
+        if (Schema::hasTable(config('kpi.users_table_name'))
+         && Schema::hasColumn(config('kpi.users_table_name'), config('kpi.last_login_column_name')) === false) {
             Schema::table(config('kpi.users_table_name'), function (Blueprint $table) {
                 $table->timestamp(config('kpi.last_login_column_name'))->nullable();
             });
@@ -18,7 +19,8 @@ class UpdateUsersTableAddLastLogin extends Migration
 
     public function down()
     {
-        if (Schema::hasTable(config('kpi.users_table_name'))) {
+        if (Schema::hasTable(config('kpi.users_table_name'))
+         && Schema::hasColumn(config('kpi.users_table_name'), config('kpi.last_login_column_name'))) {
             Schema::table(config('kpi.users_table_name'), function (Blueprint $table) {
                 $table->dropColumn(config('kpi.last_login_column_name'));
             });
